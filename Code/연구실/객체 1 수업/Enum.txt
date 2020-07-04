@@ -1,0 +1,119 @@
+Enumerator values
+각 열거자는 열거 목록의 위치에 따라 정수 값이 자동으로 할당된다. 기본적으로 첫 번째 열거자에는 정수 값 0이 할당되며, 각 이후 열거자에는 이전 열거자보다 1 더 큰 값이 할당된다.
+
+enum Color
+{
+    COLOR_BLACK, // assigned 0
+    COLOR_RED,   // assigned 1
+    COLOR_BLUE,  // assigned 2
+    COLOR_GREEN, // assigned 3
+    COLOR_WHITE, // assigned 4
+    COLOR_CYAN,  // assigned 5
+    COLOR_YELLOW,// assigned 6
+    COLOR_MAGENTA// assigned 7
+};
+
+Color paint(COLOR_WHITE);
+std::cout << paint;      // 4
+위 프로그램은 4를 출력한다.
+
+열거자의 값을 명시적으로 정의할 수 있다. 이러한 정수 값은 양 또는 음의 값일 수 있으며 다른 열거자와 같은 값을 공유할 수 있다. 정의되지 않은 모든 열거자는 이전 열거자보다 1 더 큰 값이 부여된다.
+
+enum Animal
+{
+    ANIMAL_CAT     = -3,
+    ANIMAL_DOG,    // assigned -2
+    ANIMAL_PIG,    // assigned -1
+    ANIMAL_HORSE   = 5,
+    ANIMAL_GIRAFFE = 5, // shares same value as ANIMAL_HORSE
+    ANIMAL_CHICKEN // assigned 6
+};
+
+Enum type evaluation and input/output
+열거형 값은 정수로 평가되므로 정수 변수에 할당할 수 있다. std:cout은 정수 출력 방법을 알고 있으므로 정수로 출력할 수도 있다.
+
+int mypet = ANIMAL_PIG;
+std::cout << ANIMAL_HORSE; // evaluates to integer before being passed to std::cout
+// 5
+
+컴파일러는 정수를 열거형 값으로 암시적으로 변환하지 않는다. 다음과 같은 경우 컴파일러 오류가 발생한다.
+
+Animal animal = 5; // will cause compiler error
+그러나 state_cast를 통해 강제로 변환할 수 있다.
+
+Color color = static_cast<Color>(5); // ugly
+또한, 컴파일러는 std:cin을 사용하여 열거형을 입력할 수 없다.
+
+enum Color
+{
+    COLOR_BLACK, // assigned 0
+    COLOR_RED,   // assigned 1
+    COLOR_BLUE,  // assigned 2
+    COLOR_GREEN, // assigned 3
+    COLOR_WHITE, // assigned 4
+    COLOR_CYAN,  // assigned 5
+    COLOR_YELLOW,// assigned 6
+    COLOR_MAGENTA// assigned 7
+};
+
+Color color;
+std::cin >> color; // will cause compiler error
+한가지 해결 방법은 정수를 읽고, static_cast를 사용하여 컴파일러가 정수 값을 열거형으로 입력하도록 하는 것이다.
+
+
+
+int inputColor;
+std::cin >> inputColor;
+
+Color color = static_cast<Color>(inputColor);
+열거형은 고유한 자료형으로 간주한다. 따라서 열거형에 다른 열거형을 할당하려고 하면 컴파일 오류가 발생한다.
+
+Animal animal = COLOR_BLUE; // will cause compiler error
+상수(const) 변수와 마찬가지로 열거형은 디버거에 표시되므로 #define보다 유용하다.
+
+또한, 열거형은 정수 자료형의 일부로 간주하므로 열거형 변수에 할당할 메모리 크기는 컴파일러에 따라 결정된다. C++ 표준에 따르면 열거형 크기는 모든 열거형 값을 나타낼 만큼 커야 한다. 대부분 열거형 변수는 표준 int와 같은 크기다.
+
+
+열거형은 관련 집합을 정의할 때도 사용하기 좋다. 예를 들어, 플레이어가 아이템 하나만 가지고 다닐 수 있는 게임을 만든다고 해보자. 아이템은 여러 가지 종류가 있다.
+
+#include <iostream>
+#include <string>
+
+enum ItemType
+{
+    ITEMTYPE_SWORD,
+    ITEMTYPE_TORCH,
+    ITEMTYPE_POTION
+};
+
+std::string getItemName(ItemType itemType)
+{
+    if (itemType == ITEMTYPE_SWORD)
+        return std::string("Sword");
+    if (itemType == ITEMTYPE_TORCH)
+        return std::string("Torch");
+    if (itemType == ITEMTYPE_POTION)
+        return std::string("Potion");
+
+    // Just in case we add a new item in the future and forget to update this function
+    return std::string("???");
+}
+
+int main()
+{
+    // ItemType is the enumerated type we've defined above.
+    // itemType (lower case i) is the name of the variable we're defining (of type ItemType).
+    // ITEMTYPE_TORCH is the enumerated value we're initializing variable itemType with.
+    ItemType itemType = ITEMTYPE_TORCH;
+
+    std::cout << "You are carrying a " << getItemName(itemType) << "\n";
+
+    return 0;
+}
+
+
+
+
+
+
+출처: https://boycoding.tistory.com/179 [소년코딩]
