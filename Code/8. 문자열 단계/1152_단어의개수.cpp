@@ -15,7 +15,7 @@ int main(){
   bool gogi = true;
 
   getline(cin,str);
-  for (int i = 0 ; i < str.length(); i ++)
+  for (int i = 0 ; i < str.length(); i++)
   {
      if (str[i] == ' ')
       gogi = true;
@@ -26,7 +26,7 @@ int main(){
         }
   }
 
-  cout << c <<"\n" ;
+  cout << c ;
 return 0 ;
 
 }
