@@ -2,31 +2,40 @@
 
 using namespace std;
 
+int baedal(int a);
 int main() {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
   int sultang;
-  int fi = 0;
-  int thr = 0;
+
   cin >> sultang;
 
-  /*if ((sultang % 5) % 3 == 0) // sultang % 3 == 0 || sultang % 5 == 0) {
+  /*if (sultang > 1000)
   {
-    fi = sultang / 5;
-    thr = (sultang % 5) / 3;
-    cout << fi + thr;
-  }else if ((sultang % 3) % 5 == 0)
-  {
-    fi = sultang / 5;
-    thr = (sultang % 5) / 3;
-    cout << fi + thr;
-  }else if (sultang % 5 == 0)
-  {
-    cout << sultang /5;
-  }else if (sultang % 3 == 0)
-  {
-    cout << sultang /3;
+    sultang-=1000
   }
+*/
+  cout << baedal(sultang);
+  return 0;
+}
 
-else cout << -1;
+int baedal(int a)
+{
+  int podae = 0;
 
-return 0;
-}*/
+  while (a > 0) {
+    if (a % 5 == 0) {
+      a -= 5;
+      podae++;
+    } else if (a % 3 == 0) {
+      a -= 3;
+      podae++;
+    } else if (a > 5)
+    {
+      a-=5;
+      podae++;
+    }else
+    return -1;
+  }
+  return podae;
+}
