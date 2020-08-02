@@ -3,11 +3,11 @@
 using namespace std;
 
 int main(){
-  bool arr[1000000] = {false};
+  bool arr[1000000] = {false, };
   int a , b ;
   cin >> a >>b ;
 
-  for (int i = 2 ; i <= 1000000 ; i++)
+  for (int i = 2 ; i <= b ; i++)
   {
     arr[i] = true;
   }
