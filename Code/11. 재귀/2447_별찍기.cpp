@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstring>
 /*
-1. 3^7 by 3^7 ë§Œí¼ì˜ ë°°ì—´ì„ ìƒì„±2
-2. ê³µë°±ìœ¼ë¡œ ê½‰ ì±„ì›Œ
-3. ì¬ê·€ì‹œì‘
+1. 3^7 by 3^7 ë§Œí¼?˜ ë°°ì—´?„ ?ƒ?„±2
+2. ê³µë°±?œ¼ë¡? ê½? ì±„ì›Œ
+3. ?¬ê·??‹œ?‘
  */
 using namespace std;
 void star(int a, int x, int y);
@@ -12,7 +12,7 @@ void star(int a, int x, int y);
 char board[2187][2187];
 
 int main() {
-  memset(board, '/', sizeof(board));
+  memset(board, ' ', sizeof(board));
   int a = 0;
   cin >> a;
   star(a,0,0);
@@ -28,7 +28,7 @@ int main() {
 void star(int a, int x, int y) {
 
   if (a == 1) {
-    board[x][y] = '*'; // ê° ë°°ì—´ì˜ ë°”ë‹¥ì„ ì¹˜ë©´ ë³„ì„ ì°ì;
+    board[x][y] = '*'; // ê°? ë°°ì—´?˜ ë°”ë‹¥?„ ì¹˜ë©´ ë³„ì„ ì°ì;
     return;
   }
 
@@ -38,7 +38,7 @@ void star(int a, int x, int y) {
       if (i == 1 && j == 1){
         continue;
       }
-      star(a, x + a * i, y + a * j); //ã…ëª¨ì–‘ í•˜ë‚˜ ë§Œë“¤ê³  ë‹¤ìŒ ëª¨ì–‘ìœ¼ë¡œ ë„˜ì–´ê°„ë‹¤.
+      star(a, x + a * i, y + a * j); //?…ëª¨ì–‘ ?•˜?‚˜ ë§Œë“¤ê³? ?‹¤?Œ ëª¨ì–‘?œ¼ë¡? ?„˜?–´ê°„ë‹¤.
     }
   }
 }

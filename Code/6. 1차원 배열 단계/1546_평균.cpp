@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
+  ios::sync_with_stdio(NULL);
 
   double M=0;
   int N;

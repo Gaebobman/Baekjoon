@@ -13,7 +13,7 @@ struct ProductInfo{
 int main(){
 
   system("chcp 65001");
-      ProductInfo myproduct = {4797283 , "제주 한라봉", 19900};
+      ProductInfo myproduct = {4797283 ,"제주 한라봉" , 19900}; // "제주 한라봉"
 
       cout << "상품 번호: " << myproduct.num <<endl;
       cout << "상품 이름: " <<myproduct.name<<endl;
